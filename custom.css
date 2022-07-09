@@ -1,0 +1,4 @@
+li::marker {
+  content: "• ";
+  color: #EFBE43;
+}
