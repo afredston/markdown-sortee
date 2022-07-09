@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Authoring websites, documents, and more with Markdown</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alexa Fredston" />
+    <meta name="date" content="2022-07-12" />
+    <script src="slides_files/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="custom.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Authoring websites, documents, and more with Markdown
+## SORTEE Virtual Conference
+### Alexa Fredston
+### July 12, 2022
+
+---
+
+
+
+
+
+
+class: inverse center middle
+
+# Welcome!
+
+--
+
+I'm glad you're here.
+
+---
+
+# Why am I here? 
+
+### To learn (or learn more about) markdown
+
+A beautiful, flexible language for formatting plain text — into a website, a PDF, a slide deck (like this one!), a book, a report, or just legible code. 
+
+---
+
+# Who is this for? 
+
+Anyone who wants to improve the way that you format and share your work — whatever that means to you. 
+
+---
+
+# Alexa Fredston
+
+.pull-left[
+- Postdoctoral associate, Rutgers University, New Jersey, USA
+- Quantitative marine ecologist 
+- Treasurer of SORTEE
+- Inclusive teaching of coding, etc. 
+- afredston on [Twitter](https://twitter.com/AFredston) and [GitHub](https://github.com/afredston)
+]
+
+.pull-right[
+![](images/computer_headshot.jpeg)
+]
+
+--- 
+
+# Outline
+
+1. Introduction
+1. Documents
+1. Code 
+1. Slides 
+
+---
+
+# What is Markdown?
+
+- A language for formatting text with a plain text editor 
+- Designed to be readable in its raw form
+- Similar to LaTeX, but more “lightweight” and better integrated with analyses 
+- Language agnostic; .md files can be opened by most code editors 
+  - We will be editing .Rmd files from RStudio today, but that doesn't actually require any R knowledge! 
+  
+---
+
+# What does this have to do with open science?
+
+Using Markdown to generate publications, reports, websites, etc. will:
+* Make dynamically updating them with new results easier
+* Reduce errors from manually entering results 
+* Create new venues for science communication
+
+Using Markdown to organize your code will:
+* Allow you to organize and annotate your analyses 
+* Make it easier for others to tell what you did, aiding reproducibility  
+  
+---
+
+# Cool Markdown examples
+
+An entire scientific manuscript [marine protected areas](https://github.com/DanOvando/population-effects-of-mpas) or [matrix population models](https://github.com/BruceKendall/MPM-errors)
+
+A [dynamically updating CV](http://nickstrayer.me/datadrivencv/)
+
+A [RMarkdown tutorial ... written in RMarkdown](https://allisonhorst.github.io/udm-rmarkdown/) 🤯 
+
+A [website collaboratively authored in RMarkdown](https://thefaylab.github.io/lab-manual)
+
+An [entire course](https://damariszurell.github.io/CLEWS-EDB/)
+
+Tutorials accompanying the [#Rstats Question of the Day](https://github.com/mohit2152sharma/dsqadTutorials)
+
+
+
+---
+
+# Today's learning objectives
+
+By the end of this tutorial, I expect that you will be able to:
+* Understand the different parts of a Markdown file
+* Recognize how the formatting of raw text in Markdown translates to the aesthetics of an output file
+* Generate basic PDFs and slides with code output 
+* Understand how Markdown can facilitate open science goals
+* Know where to go to get help or learn more 
+
+---
+
+# The architecture of Markdown
+
+### 1. YAML header
+### 2. Markdown text
+### 3. Code chunks 
+
+---
+
+## 1. YAML header 
+
+.pull-left[
+- Its own language (not markdown!)
+- New markdown files in R include it by default
+- Modify it to change some global document options (custom formatting)
+- Mostly going to ignore it today
+]
+
+.pull-right[
+![](images/yaml.png)
+]
+
+---
+
+## 2. Markdown text
+
+.pull-left[
+rmarkdown
+![](images/rmd.png)
+]
+
+.pull-right[ 
+html 
+
+![](images/html.png)
+]
+
+---
+
+## 3. Code chunks
+
+
+```r
+ggplot(aes(x=body_mass_g, y=flipper_length_mm), data=penguins) +
+  geom_point() +
+  theme_xaringan() + labs(x="Body mass, mm", y="Flipper length, g")
+```
+
+&lt;img src="slides_files/figure-html/demo-intro-1.png" width="100%" /&gt;
+
+---
+class: inverse center middle
+
+# Let's get started
+
+---
+
+# Setup
+
+Software you will need: 
+- RStudio
+
+Packages you will need installed:
+- `rmarkdown`
+- `palmerpenguins`
+- `tidyverse`
+- `leaflet` (not crucial if you don't want to install it)
+
+Run `install.packages("packagename")` for any of these that you need to. 
+
+Take five minutes to do all this, and let me know if you have issues. 
+
+Throughout this workshop, you can get help by raising your hand or using the chat. 
+
+---
+
+# Get the code!
+
+This unavoidably involves a little bit of exposure to GitHub. 
+
+1. Go to [https://github.com/afredston/markdown-sortee](https://github.com/afredston/markdown-sortee) (I will also put this link in the chat)
+1. Click the green "Code ▾" button and then download ZIP (unless you are comfortable enough with GitHub to clone the repository; in that case, go for it)
+1. Open RStudio and then navigate to the contents of the ZIP
+
+---
+class: inverse center middle
+
+# Documents
+
+---
+
+# Authoring documents
+
+1. Open `document.Rmd` in RStudio
+1. Click "knit" at the top of RStudio (if you don't see it, be sure rmarkdown is installed, and relaunch RStudio)
+1. Marvel at the glory of what you've created
+1. Look line by line between the .pdf and the .Rmd documents. (The PDF will also appear in the `markdown-sortee` folder that `document.Rmd` is in, if you have trouble finding it.)
+1. Change something in the document! Here are some ideas:
+  + Edit the title, author, or date
+  + Write some new text, and try formatting it (make it bold, a header, a bullet...)
+  + Change the embedded photo
+1. If you're familiar with these Markdown basics, try something more advanced (and any of you can do this with Google's help!)
+  + Change the color of some text
+  + Insert a table 
+  + Add an in-text reference to the photo
+  + Try aligning text to the center or right, or the image to the left or right
+
+I'll give you five minutes to explore this and troubleshoot as needed. Then we'll check in, and hopefully some of you will share what you discovered. Then I'll bring the document up on my computer and give you a tour. 
+
+---
+
+# Authoring documents
+
+One fairly new feature (and one reason we're using RStudio today!) is their new [visual markdown editor](https://rstudio.github.io/visual-markdown-editing/). It's basically an ultra powerful hybrid of Markdown and Microsoft Word. But be warned, it's a little buggy if you frequently switch editing modes. 
+
+People write whole books in Markdown, and this may make that seem a little more achievable. For example, the new visual editor allows [easy citation management with a Zotero library](https://www.rstudio.com/blog/rstudio-1-4-preview-citations/) (if we have time, I'll show you this on my computer). 
+
+---
+
+# Authoring documents
+
+### What's the catch?
+
+Much like the transition from Excel to code, some simple things are much faster in Markdown (changing the font throughout your document), and others are much more annoying (sizing and aligning images). 
+
+In my experience, Markdown is worth it for scientists because of its enormous advantage over a word processor: **code integration**. 
+
+---
+class: inverse center middle
+
+# Code
+
+---
+
+# Why code in Markdown?
+
+* Can render text and code outputs in the same document
+* Can annotate and organize your code more legibly 
+* Don't actually need to do anything different to your code
+* Can use multiple programming languages in the same script (although I generally suggest [Jupyter](https://jupyter.org/) instead for this)
+
+```
+##  [1] "awk"       "bash"      "coffee"    "gawk"      "groovy"    "haskell"   "lein"     
+##  [8] "mysql"     "node"      "octave"    "perl"      "psql"      "Rscript"   "ruby"     
+## [15] "sas"       "scala"     "sed"       "sh"        "stata"     "zsh"       "highlight"
+## [22] "Rcpp"      "tikz"      "dot"       "c"         "cc"        "fortran"   "fortran95"
+## [29] "asy"       "cat"       "asis"      "stan"      "block"     "block2"    "js"       
+## [36] "css"       "sql"       "go"        "python"    "julia"     "sass"      "scss"     
+## [43] "R"         "bslib"
+```
+
+---
+
+# Writing code with RMarkdown
+
+1. Open `code.Rmd`. 
+1. Read through the document and run the chunks one at a time. 
+1. Try any of the following:
+  - Create a new chunk that generates a different figure
+  - Add some chunk options to the header to control how the figure is printed; for example, `fig.cap="Caption here"` or `fig.width=5` or `results="hide"`. See [https://yihui.org/knitr/options/](https://yihui.org/knitr/options/) for details
+  - Put in new coordinates to the map chunk to map someplace you know
+  - Click "knit" at the top of the page and see what happens!
+  - If there is anything you want formatted differently in the html file output, try to fix it (hint: you might start with the chunk options for the first chunk, `setup`)
+1. If R isn't your language, feel free to explore these same options in Jupyter.
+
+---
+
+class: inverse center middle
+
+# Slides
+
+---
+
+# Creating presentations with RMarkdown
+
+The principles are the same as you've learned — text formatted in Markdown, code chunks, embedded links / images / references / etc. 
+
+The only big difference to remember is that slides are split from one another by:
+
+`---`
+
+Creating presentations in RMarkdown will often force you to deal with extra formatting challenges (image sizes, etc)
+
+The best way to learn is just to try it! 
+
+---
+
+# Creating presentations with RMarkdown
+
+This is a great time to learn how to create *new* .md or .Rmd files — up to now, you've been using ones I created. Take a few minutes to try the following. 
+
+To create a new `.Rmd` from RStudio, click file -&gt; new file -&gt; RMarkdown and click "Presentation". I suggest you use ioslides or Slidy, unless you know you have TeX installed, in which case beamer works too.
+
+Now... you have all the skills to create this presentation! Try:
+* Adding a title slide (use headers)
+* Inserting a plot 
+* Making lists 
+
+Try knitting it along the way to see how it looks.
+
+Feel free to copy-paste code from `code.Rmd` and `document.Rmd`. Save this new file as `presentation.Rmd`. 
+
+---
+
+# Xaringan
+
+I make my slides using [xaringan](https://bookdown.org/yihui/rmarkdown/xaringan.html), which I encourage you to install and explore. It's easy to make beautiful and unique presentations with minimal coding, especially with the help of [xaringanthemer](https://pkg.garrickadenbuie.com/xaringanthemer/). 
+
+It has lots of other cool features — for example, xaringan's "infinite moon reader" (`xaringan::inf_mr()`) lets you view the rendered output as you type.
+
+---
+
+# We're almost done!
+
+## Any questions before I wrap up? 
+
+---
+
+# A horizon scan: Quarto
+
+[Quarto](https://quarto.org/) is a sequel to RMarkdown developed by RStudio. 
+
+While they are still maintaining RMarkdown, a lot of new development will probably happen in Quarto.
+
+The differences between RMarkdown and Quarto are not huge for R users ([overview here](https://yihui.org/en/2022/04/quarto-r-markdown/)), and there is much more RMarkdown documentation available, which is why I taught it today. 
+
+I encourage you to keep tabs on Quarto's development and try it out, especially if you're not an R user. 
+
+---
+# Thank you for your participation 
+
+.pull-left[
+### My sources and inspiration
+- [Yihui Xie's extraordinary RMarkdown guide](https://bookdown.org/yihui/rmarkdown/)
+- [Allison Horst's rmarkdown tutorial](https://allisonhorst.github.io/udm-rmarkdown/)
+
+### How to contact me
+- Email fredston@rutgers.edu 
+- afredston on [Twitter](https://twitter.com/AFredston) and [GitHub](https://github.com/afredston)
+- [alexafredston.com](https://www.alexafredston.com/)
+
+]
+
+.pull-right[
+### Additional resources
+- [Yihui Xie's hilarious, whirlwind video tour of RMarkdown](https://www.youtube.com/watch?v=qLEkUjxk7e8)
+- [A Xaringan slides tutorial video](https://presentable-user2021.netlify.app/)
+- [Alison Hill and Desirée De Leon's overview of publishing .Rmds to websites](https://rstudio-education.github.io/sharing-short-notice/#1)
+]
+- [Alison Hill's advanced RMarkdown workshop](https://www.apreshill.com/project/advanced-r-markdown/)
+
+---
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:10",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+---
+title: "Document"
+author: "You"
+date: 2022
+output: pdf_document
+---
+*Psst: That's the YAML header up there!*
+
+# What's the purpose of this document?
+
+It's to show you *just how easy it is* to craft beautiful documents in Markdown!
+
+Note that this document has **zero R code.** We're just using RStudio as a file editor right now.
+
+## Writing equations and code
+
+Those of you familiar with LaTeX will note some similarities. (Even if you aren't, a cool piece of trivia: it's pronounced "lay-tek" because it's based on the TeX typesetting system, and the name TeX is technically written with Greek letters tau, epsilon, chi: $\tau \epsilon \chi$.)
+
+Actually, writing equations in Markdown is easy and basically the same as LaTeX:
+$$
+y=mx+b
+$$
+
+Those are examples of two concepts that are useful Markdown terms: "inline" (code, equations) *vs.* "blocks" or "chunks". Code is delimited by back quotation marks, and TeX by dollar signs.
+
+Surrounding any inline text with single dollar signs will make it an equation, and back quotes / back ticks (these things: \` ) will create inline code. (Depending on how you write it, this will either *just look like code* or *actually get evaluated as code*; more on this later). It might take a second to find the back tick key on your keyboard! On mine it's near the top left.
+
+If you want your code or equation to stand alone on the page, you'll need to create a block of it. This always happens on a new line. For equations, type two dollar signs above and below the equation:
+
+$$
+A=\pi r^2
+$$
+
+And code chunks are delimited by three backticks followed by curly brackets, then the code on a new line, then another three backticks on a new line. 
+
+```{}
+"Your code goes here"
+```
+
+## Some other cool formatting 
+
+* Bulleted list
+  * Just hit "tab" to make a sub-bullet
+  
+1. Numbered lists
+1. Numbers update automatically; you can always start them with 1. 
+
+## You made it this far!
+
+Here's a puppy photo to reward you.
+
+![Baby Sasha](images/puppy.JPG)

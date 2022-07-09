@@ -1,0 +1,49 @@
+---
+title: "code"
+output:
+  html_document: default
+---
+
+# Code demo
+
+To see the true power of Markdown, we need to integrate its formidable text processing (that we already saw) with its seamless code integration. Some of my long RMarkdown files are never even knitted; I just use Markdown for the code organization — being able to run things in chunks and navigate through the code with the dropdown menu at the bottom of this window are huge advantages. 
+
+To do this, we're going to use the [palmerpenguins](https://allisonhorst.github.io/palmerpenguins/) dataset. 
+
+I usually start all of my Markdown coding documents with a "setup" chunk. This is where I load packages and data. (I often set global options here too, but I won't today for simplicity; remind me if you want to know more about this.)
+
+You can run just this chunk by clicking the green arrow to the right. 
+
+```{r setup}
+library(tidyverse)
+penguins <- palmerpenguins::penguins
+```
+
+Let's generate a figure. Click the green arrow again. 
+
+```{r plot1}
+ggplot(aes(x=body_mass_g, y=flipper_length_mm), data=penguins) +
+  geom_point() +
+  labs(x="Body mass, mm", y="Flipper length, g")
+```
+Note one of the cool things about RMarkdown--it renders the plot right below the code, which is a nice way to inspect results as you go.  
+
+However, it's sort of annoying that this prints a warning message. We can stop that, and customize a great deal more about how RMarkdown handles code chunks, in the header. 
+
+```{r plot2, warning=FALSE}
+ggplot(aes(x=body_mass_g, y=flipper_length_mm), data=penguins) +
+  geom_point() +
+  labs(x="Body mass, mm", y="Flipper length, g")
+```
+
+If you need a reminder of where Adelie penguins come from, just run this chunk to create a map of Antarctica. 
+
+```{r out.width='100%', echo=FALSE}
+library(leaflet)
+leaflet() %>% addTiles() %>%
+  setView(-64.774281, -64.053776, zoom = 5) %>%
+  addPopups(
+    -64.774281, -64.053776,
+    'Here is <b>Palmer Station</b> (approximately)'
+  )
+```
