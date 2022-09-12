@@ -1,9 +1,9 @@
 ---
 title: "Authoring websites, documents, and more with Markdown"
-subtitle: "SORTEE Virtual Conference"  
+subtitle: "SORTEE Webinar"  
 author: 
   - "Alexa Fredston"
-date: 'July 12, 2022'
+date: 'September 14, 2022'
 output:
   xaringan::moon_reader:
     css: [xaringan-themer.css, custom.css]
@@ -142,7 +142,6 @@ A [website collaboratively authored in RMarkdown](https://thefaylab.github.io/la
 
 An [entire course](https://damariszurell.github.io/CLEWS-EDB/)
 
-Tutorials accompanying the [#Rstats Question of the Day](https://github.com/mohit2152sharma/dsqadTutorials)
 
 
 
@@ -396,7 +395,7 @@ I encourage you to keep tabs on Quarto's development and try it out, especially 
 - [Yihui Xie's hilarious, whirlwind video tour of RMarkdown](https://www.youtube.com/watch?v=qLEkUjxk7e8)
 - [A Xaringan slides tutorial video](https://presentable-user2021.netlify.app/)
 - [Alison Hill and Desirée De Leon's overview of publishing .Rmds to websites](https://rstudio-education.github.io/sharing-short-notice/#1)
-]
 - [Alison Hill's advanced RMarkdown workshop](https://www.apreshill.com/project/advanced-r-markdown/)
+]
 
 ---
